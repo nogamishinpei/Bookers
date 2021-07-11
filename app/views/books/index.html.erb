@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+<h1>Books投稿一覧</h1>
+<nav>
+  <ul class="nav-list">
+    <li class="nav-list-item">Title</li>
+    <li class="nav-list-item">Body</li>
+  </ul>
+</nav>
+
+<h1>新規投稿</h1>
+<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8"method="post"></form>
+
+<div class="field">
+  
+  <label for="book_title">Title</label>
+  <input class="book_title"type="text" name="book[title]" id="book_title">
+  
+</div>
+<div class="feald">
+  <label for="book_body">Body</label>
+  <textarea class="book_body" name="book[body]" id="book_body"></textarea>
+</div>
+
+
+</body>
+</html>
