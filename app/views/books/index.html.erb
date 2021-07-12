@@ -6,22 +6,44 @@
 <h1>Books投稿一覧</h1>
 
 <% @books.each do |book| %>
-  <p>Title</p>
-  <span><%= book.title %></span>
+
+  <table>
+    <thead>
+      <tr>
+      <th>Title</th>
+        <th>Body</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+      <tb><span><%= book.title %></span></tb>
+      <tb><span><%= book.body %></span></tb>
+
+      <tb>
+        <a class = "show[:id]" href = "/books/[:id]">Show</a>
+        <a class = "edit[:id]" href = "/books/[:id]">edit</a>
+        <a>Destroy</a>
+        </tb>
+      </tr>
+
+    </tbody>
+  </table>
 <% end %>
 
 
-
-
 <h1>新規投稿</h1>
-<!-- form_with部分 -->
+
 <%= form_with model: @book, url:'/books', local:true do |f| %>
+
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 
+
   <h4>本文</h4>
   <%= f.text_area :body %>
-  <%= f.submit '投稿' %>
+  <%= f.submit 'Create Book' %>
 <% end %>
 
 
