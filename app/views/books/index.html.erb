@@ -22,9 +22,9 @@
       <tb><span><%= book.body %></span></tb>
 
       <tb>
-        <a class = "show[:id]" href = "/books/[:id]">Show</a>
-        <a class = "edit[:id]" href = "/books/[:id]">edit</a>
-        <a>Destroy</a>
+        <td><%= link_to "show", book_path(book.id), method: :get %></td>
+        <tb><%= link_to 'Edit', book_path(id: book.id) %></tb>
+        <tb><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></tb>
         </tb>
       </tr>
 

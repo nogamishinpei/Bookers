@@ -8,9 +8,30 @@
   color: #6c6b6b;
 }
 
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+table{
+  display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
 th{
   padding-bottom: 5px;
-  
+
 }
 
 th{
