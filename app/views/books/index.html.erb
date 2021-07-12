@@ -4,28 +4,25 @@
 
 <body>
 <h1>Books投稿一覧</h1>
-<nav>
-  
-  <ul class="nav-list">
-    <li class="nav-list-item">Title</li>
-    <li class="nav-list-item">Body</li>
-  </ul>
-</nav>
+
+<% @books.each do |book| %>
+  <p>Title</p>
+  <span><%= book.title %></span>
+<% end %>
+
+
+
 
 <h1>新規投稿</h1>
-<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8"method="post"></form>
+<!-- form_with部分 -->
+<%= form_with model: @book, url:'/books', local:true do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
 
-<div class="field">
-  
-  <label for="book_title">Title</label>
-  <input class="book_title"type="text" name="book[title]" id="book_title">
-
-  
-</div>
-<div class="feald">
-  <label for="book_body">Body</label>
-  <textarea class="book_body" name="book[body]" id="book_body"></textarea>
-</div>
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>
 
 
 </body>
