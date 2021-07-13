@@ -32,7 +32,7 @@ class BooksController < ApplicationController
   	book.update(book_params)
   	flash[:notice] = "successfully updated!"
   	redirect_to book_path(book)
-
+  	
   end
 
   def destroy
