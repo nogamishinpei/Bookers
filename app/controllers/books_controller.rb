@@ -1,18 +1,21 @@
 class BooksController < ApplicationController
- def new
-    @book = Book.new
+ 
+ def create
+    @books = Book.all
+    @book = Book.new(book_params)
+    
+      if @book.save
+        flash[:notice] = "successfully newbook!"
+        redirect_to book_path(@book)
+        
+      else
+        flash.now[:error] = @book.errors.full_messages
+        render :index
+      end
  end
 
-  def create
-    # １. データを新規登録するためのインスタンス作成
-    book = Book.new(book_params)
-    # ２. データをデータベースに保存するためのsaveメソッド実行
-    book.save
-    # ３. トップ画面へリダイレクト
-    redirect_to '/books'
-  end
-
   def index
+      @book = Book.new
       @books = Book.all
   end
 
@@ -25,16 +28,19 @@ class BooksController < ApplicationController
   end
 
   def update
-     book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    book = Book.find(params[:id])
+  	book.update(book_params)
+  	flash[:notice] = "successfully update!"
+  	redirect_to book_path(book)
+
   end
 
   def destroy
-    book = Book.find(params[:id])  
-    book.destroy 
-    redirect_to books_path  
-    
+    book = Book.find(params[:id])
+  	book.destroy
+  	flash[:notice] = "successfully!complete destroy"
+  	redirect_to books_path
+
   end
 
 
@@ -42,6 +48,6 @@ class BooksController < ApplicationController
   private
   # ストロングパラメータ
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 end
