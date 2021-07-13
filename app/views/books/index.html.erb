@@ -4,6 +4,10 @@
 
 <body>
     
+    <% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
 <h1>Books投稿一覧</h1>
 
 
@@ -16,7 +20,6 @@
        <th colspan="3"></th>
      </tr>
   </thead>
-
 
     <tbody>
      <% @books.each do |book| %>
@@ -32,8 +35,6 @@
      <% end %>
     </tbody>
 </table>
-
-
 
 
 <h1>新規投稿</h1>
