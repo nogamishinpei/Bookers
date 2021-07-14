@@ -12,7 +12,7 @@ class BooksController < ApplicationController
         flash.now[:error] = @book.errors.full_messages
         render :index
       end
- end
+  end
 
   def index
       @book = Book.new
@@ -28,11 +28,16 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-  	book.update(book_params)
+    @book = Book.find(params[:id])
+    
+  	if @book.update(book_params)
   	flash[:notice] = "successfully updated!"
   	redirect_to book_path(book)
   	
+  	else
+        
+        render :edit
+    end
   end
 
   def destroy
